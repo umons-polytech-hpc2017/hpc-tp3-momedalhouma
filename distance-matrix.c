@@ -81,6 +81,8 @@ void quicksort(float *distances,
   }
 }
 
+#ifndef TESTING
+
 int main(int argc, char *argv[]) {
   char *inputfile, *outputfile;
   unsigned int *xs, *ys, *distanceIndices, locationCount, offset, index;
@@ -103,8 +105,6 @@ int main(int argc, char *argv[]) {
   readFile(inputfile, &xs, &ys, &locationCount);
   printf("main: Read %u point coordinates\n", locationCount);
   coordinateSize = locationCount * sizeof(int);
-  xs = (unsigned int *) malloc(coordinateSize);
-  ys = (unsigned int *) malloc(coordinateSize);
   printf("main: Allocated 2 coordinate arrays of %lu bytes\n", coordinateSize);
 
   distanceCount = locationCount * locationCount;
@@ -176,3 +176,5 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
+
+#endif
